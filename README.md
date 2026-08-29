@@ -109,7 +109,7 @@ PSDRIV 4 /VCPS
 XWDRIV 1 /XWINDOW  
 XWDRIV 2 /XSERVE  
 ```bash
-../pgplot/makemake ../pgplot linux g77_gcc 再执行一次
+../pgplot/makemake ../pgplot linux g77_gcc #再执行一次
 cd pgplot
 ```
 修改 Makefile
