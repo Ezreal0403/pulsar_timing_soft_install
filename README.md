@@ -151,3 +151,10 @@ apsr asp bcpm bpsr caspsr cpsr2 cpsr dummy fits gmrt guppi kat lbadr64 lbadr lum
 make
 make install
 make clean
+```bash
+ls
+cd
+#我去
+ls
+cd $ASTROSOFT
+```
