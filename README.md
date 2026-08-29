@@ -1,4 +1,4 @@
-# Pulsar_timing_soft_installation
+# <center>Pulsar_timing_soft_installation<center>
 此文档针对于**x86_64**架构CPU, **Ubuntu**系统安装常用的脉冲星计时软件(Dspsr,Psrcat,Psrchive,Tempo,Tempo2),终端执行 uname -m 可以查看CPU架构.  
 ### 下载必要的依赖包
 打开终端，运行命令  
