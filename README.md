@@ -7,8 +7,13 @@ sudo apt update
 ```bash
 sudo apt install vim libtool wget libpng-dev libgd-dev autoconf automake libtool m4 git gsl-bin libgsl-dev flex bison fort77 libglib2.0-dev gnuplot  swig libltdl-dev libltdl7 cmake libblas3 liblapack3 libblas-dev liblapack-dev libxext-dev libx11-dev libopenmpi-dev openmpi-bin libhdf5-openmpi-dev mpich libmpich-dev libhdf5-mpich-dev tcsh pgplot5 imagemagick bc latex2html gfortran
 ```  
-待安装完成后，添加环境变量  
-`vim ~/.bashrc`打开文件，将光标移到最下面一行，按`i`进入输入模式  
+等待安装完成  
+
+### 添加环境变量  
+```bash
+vim ~/.bashrc
+```
+打开文件，将光标移到最下面一行，按`i`进入输入模式  
 将下面的环境变量复制进.bashrc文件末尾，**将{user}换成你电脑的用户名**  
 
 ```bash
