@@ -43,7 +43,7 @@ export PATH=$PATH:$ASTROSOFT/bin:$PGPLOT_DIR
 export PKG_CONFIG_PATH=$ASTROSOFT/lib/pkgconfig:$PKG_CONFIG_PATH:$ASTROSOFT/psrchive/Management:$ASTROSOFT/lib/pkgconfig
 ```
 
-用命令 ：wq 保存，再在终端执行 source ~/.bashrc 刷新终端的环境变量
+用命令`：wq`保存，再在终端执行`source ~/.bashrc`刷新终端的环境变量
 若终端执行 echo $ASTROSOFT 输出了 /home/{user}/psrsoft 则成功
 mkdir $ASTROSOFT/bin $ASTROSOFT/lib
 
