@@ -99,15 +99,15 @@ tar zvxf pgplot5.2.tar.gz
 cd pgplot_build
 ../pgplot/makemake ../pgplot linux g77_gcc
 ```
-打开drivers.list,将下面内容所在行前的！去掉
-PNDRIV 1 /PNG
-PNDRIV 2 /TPNG
-PSDRIV 1 /PS
-PSDRIV 2 /VPS
-PSDRIV 3 /CPS
-PSDRIV 4 /VCPS
-XWDRIV 1 /XWINDOW
-XWDRIV 2 /XSERVE
+打开drivers.list,将下面内容所在行前的！去掉  
+PNDRIV 1 /PNG  
+PNDRIV 2 /TPNG  
+PSDRIV 1 /PS  
+PSDRIV 2 /VPS  
+PSDRIV 3 /CPS  
+PSDRIV 4 /VCPS  
+XWDRIV 1 /XWINDOW  
+XWDRIV 2 /XSERVE  
 ```bash
 ../pgplot/makemake ../pgplot linux g77_gcc 再执行一次
 cd pgplot
