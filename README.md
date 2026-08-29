@@ -117,3 +117,27 @@ git clone https://bitbucket.org/psrsoft/tempo2.git
 ./configure F77=gfortran --prefix=$ASTROSOFT --with-cfitsio-dir=$ASTROSOFT --with-fftw3-dir=$ASTROSOFT LDFLAGS=-L/lib/x86_64-linux-gnu LIBS=-lgslcblas
 make && make install
 make plugins && make plugins-install
+
+安装Psrchive
+cd $ASTROSOFT
+git clone git://git.code.sf.net/p/psrchive/code psrchive
+cd psrchive
+./bootstrap
+./configure F77=gfortran --prefix=$ASTROSOFT LDFLAGS=-L/lib/x86_64-linux-gnu --enable-shared
+make
+make install
+make clean
+
+安装Dspsr
+cd $ASTROSOFT
+git clone git://git.code.sf.net/p/dspsr/code dspsr
+cd dspsr
+vim backends.list
+将下面内容复制进去
+apsr asp bcpm bpsr caspsr cpsr2 cpsr dummy fits gmrt guppi kat lbadr64 lbadr lump lwa mark4 mark5 maxim mwa pdev pmdaq s2 sigproc spda1k spigot vdif
+:wq 保存内容
+./bootstrap
+./configure --prefix=$ASTROSOFT --with-cfitsio-dir=$ASTROSOFT F77=gfortran CFLAGS=-fPIC FFLAGS=-fPIC LDFLAGS=-L$PGPLOT_DIR
+make
+make install
+make clean
