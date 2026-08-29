@@ -6,7 +6,7 @@ sudo apt update
 sudo apt install vim libtool wget libpng-dev libgd-dev autoconf automake libtool m4 git gsl-bin libgsl-dev flex bison fort77 libglib2.0-dev gnuplot  swig libltdl-dev libltdl7 cmake libblas3 liblapack3 libblas-dev liblapack-dev libxext-dev libx11-dev libopenmpi-dev openmpi-bin libhdf5-openmpi-dev mpich libmpich-dev libhdf5-mpich-dev tcsh pgplot5 imagemagick bc latex2html gfortran
 待安装完成后，添加环境变量
 vim ~/.bashrc 打开文件，将光标移到最下面一行，按 i 进入输入模式
-将下面的环境变量复制进.bashrc文件末尾
+将下面的环境变量复制进.bashrc文件末尾，将{user}换成你电脑的用户名
 # Path to the pulsar software installation directory e.g:
 export ASTROSOFT=/home/{user}/psrsoft
 
@@ -39,4 +39,33 @@ export PATH=$PATH:$ASTROSOFT/bin:$PGPLOT_DIR
 
 # Pkgconfig
 export PKG_CONFIG_PATH=$ASTROSOFT/lib/pkgconfig:$PKG_CONFIG_PATH:$ASTROSOFT/psrchive/Management:$ASTROSOFT/lib/pkgconfig
-用命令 ：wq 保存，再运行 source ~/.bashrc 刷新终端的环境变量
+用命令 ：wq 保存，再在终端执行 source ~/.bashrc 刷新终端的环境变量
+若终端执行 echo $ASTROSOFT 输出了 /home/{user}/psrsoft 则成功
+mkdir $ASTROSOFT/bin $ASTROSOFT/lib
+安装FFT包
+cd $ASTROSOFT
+wget http://www.fftw.org/fftw-3.3.11.tar.gz
+tar zvxf fftw-3.3.11.tar.gz
+cd fftw-3.3.11
+./configure --prefix=$ASTROSOFT --enable-float --enable-shared 第二个参数--enable-float是安装单精度版本，第三个参数--enable-shared是安装双精度版本
+make
+make check
+make install
+make clean
+若在$ASTROSOFT/lib下看到libfftw3.so和libfftw3f.so两个文件说明安装成功
+安装Psrcat
+cd $ASTROSOFT
+wget https://www.atnf.csiro.au/research/pulsar/psrcat/downloads/psrcat_pkg.v2.8.1.tar.gz
+tar zvxf psrcat_pkg.v2.8.1.tar.gz
+cd psrcat_tar
+source makeit
+cp psrcat $ASTROSOFT/bin
+安装Tempo
+cd $ASTROSOFT
+git clone git://git.code.sf.net/p/tempo/tempo
+cd tempo
+./prepare
+./configure F77=gfortran --prefix=$ASTROSOFT --with-cfitsio-dir=$ASTROSOFT --with-fftw3-dir=$ASTROSOFT CFLAGS=-fPIC FFLAGS=-fPIC LIBS=-lgslcblas
+make
+make install
+make clean
