@@ -7,6 +7,7 @@ sudo apt install vim libtool wget libpng-dev libgd-dev autoconf automake libtool
 待安装完成后，添加环境变量
 vim ~/.bashrc 打开文件，将光标移到最下面一行，按 i 进入输入模式
 将下面的环境变量复制进.bashrc文件末尾，将{user}换成你电脑的用户名
+
 ‘‘‘bash
 # Path to the pulsar software installation directory e.g:
 export ASTROSOFT=/home/{user}/psrsoft
@@ -41,6 +42,7 @@ export PATH=$PATH:$ASTROSOFT/bin:$PGPLOT_DIR
 # Pkgconfig
 export PKG_CONFIG_PATH=$ASTROSOFT/lib/pkgconfig:$PKG_CONFIG_PATH:$ASTROSOFT/psrchive/Management:$ASTROSOFT/lib/pkgconfig
 ’’’
+
 用命令 ：wq 保存，再在终端执行 source ~/.bashrc 刷新终端的环境变量
 若终端执行 echo $ASTROSOFT 输出了 /home/{user}/psrsoft 则成功
 mkdir $ASTROSOFT/bin $ASTROSOFT/lib
