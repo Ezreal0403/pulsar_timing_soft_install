@@ -167,8 +167,8 @@ vim backends.list
 ```
 apsr asp bcpm bpsr caspsr cpsr2 cpsr dummy fits gmrt guppi kat lbadr64 lbadr lump lwa mark4 mark5 maxim mwa pdev pmdaq s2 sigproc spda1k spigot vdif
 ```
+`:wq`保存内容  
 ```bash
-:wq #保存内容
 ./bootstrap
 ./configure --prefix=$ASTROSOFT --with-cfitsio-dir=$ASTROSOFT F77=gfortran CFLAGS=-fPIC FFLAGS=-fPIC LDFLAGS=-L$PGPLOT_DIR
 make
