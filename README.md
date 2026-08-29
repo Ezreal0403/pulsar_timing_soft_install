@@ -1,6 +1,7 @@
 # Pulsar_timing_soft_installation
 此文档针对于**x86_64**架构CPU, **Ubuntu**系统安装常用的脉冲星计时软件(Dspsr,Psrcat,Psrchive,Tempo,Tempo2),终端执行 uname -m 可以查看CPU架构.  
-首先下载必要的依赖包.打开终端，运行命令  
+### 首先下载必要的依赖包.  
+打开终端，运行命令  
 ```bash
 sudo apt update
 ```
@@ -68,7 +69,7 @@ make check
 make install
 make clean
 ```
-若在$ASTROSOFT/lib下看到libfftw3.so和libfftw3f.so两个文件说明安装成功  
+若在$ASTROSOFT/lib下看到**libfftw3.so**和**libfftw3f.so**两个文件说明安装成功  
 
 ### 按装CFITSIO包
 ```bash
