@@ -7,7 +7,7 @@ sudo apt update
 ```bash
 sudo apt install vim libtool wget libpng-dev libgd-dev autoconf automake libtool m4 git gsl-bin libgsl-dev flex bison fort77 libglib2.0-dev gnuplot  swig libltdl-dev libltdl7 cmake libblas3 liblapack3 libblas-dev liblapack-dev libxext-dev libx11-dev libopenmpi-dev openmpi-bin libhdf5-openmpi-dev mpich libmpich-dev libhdf5-mpich-dev tcsh pgplot5 imagemagick bc latex2html gfortran
 ```  
-等待安装完成  
+等待安装完成.  
 
 ### 添加环境变量  
 ```bash
@@ -51,7 +51,12 @@ export PATH=$PATH:$ASTROSOFT/bin:$PGPLOT_DIR
 export PKG_CONFIG_PATH=$ASTROSOFT/lib/pkgconfig:$PKG_CONFIG_PATH:$ASTROSOFT/psrchive/Management:$ASTROSOFT/lib/pkgconfig
 ```
 
-用命令`：wq`保存，再在终端执行`source ~/.bashrc`刷新终端的环境变量
+输入`：wq`加回车保存，  
+终端执行
+```bash
+source ~/.bashrc
+```
+刷新终端的环境变量.  
 若终端执行`echo $ASTROSOFT`输出了`/home/{user}/psrsoft`则说明成功.
 ```bash
 mkdir $ASTROSOFT/bin $ASTROSOFT/lib
