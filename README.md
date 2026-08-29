@@ -9,7 +9,7 @@ sudo apt install vim libtool wget libpng-dev libgd-dev autoconf automake libtool
 ```  
 待安装完成后，添加环境变量  
 `vim ~/.bashrc`打开文件，将光标移到最下面一行，按`i`进入输入模式  
-将下面的环境变量复制进.bashrc文件末尾，将{user}换成你电脑的用户名  
+将下面的环境变量复制进.bashrc文件末尾，**将{user}换成你电脑的用户名**  
 
 ```bash
 # Path to the pulsar software installation directory e.g:
@@ -48,19 +48,22 @@ export PKG_CONFIG_PATH=$ASTROSOFT/lib/pkgconfig:$PKG_CONFIG_PATH:$ASTROSOFT/psrc
 
 用命令`：wq`保存，再在终端执行`source ~/.bashrc`刷新终端的环境变量
 若终端执行`echo $ASTROSOFT`输出了`/home/{user}/psrsoft`则说明成功.
-`mkdir $ASTROSOFT/bin $ASTROSOFT/lib`
-
+```bash
+mkdir $ASTROSOFT/bin $ASTROSOFT/lib
+```
 ### 安装FFT包
+```bash
 cd $ASTROSOFT
 wget http://www.fftw.org/fftw-3.3.11.tar.gz
 tar zvxf fftw-3.3.11.tar.gz
 cd fftw-3.3.11
-./configure --prefix=$ASTROSOFT --enable-float --enable-shared 第二个参数--enable-float是安装单精度版本，第三个参数--enable-shared是安装双精度版本
+./configure --prefix=$ASTROSOFT --enable-float --enable-shared #第二个参数--enable-float是安装单精度版本，第三个参数--enable-shared是安装双精度版本
 make
 make check
 make install
 make clean
-若在$ASTROSOFT/lib下看到libfftw3.so和libfftw3f.so两个文件说明安装成功
+```
+若在$ASTROSOFT/lib下看到libfftw3.so和libfftw3f.so两个文件说明安装成功  
 
 ### 按装CFITSIO包
 cd $ASTROSOFT
