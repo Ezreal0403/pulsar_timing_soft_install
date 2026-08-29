@@ -99,7 +99,7 @@ tar zvxf pgplot5.2.tar.gz
 cd pgplot_build
 ../pgplot/makemake ../pgplot linux g77_gcc
 ```
-打开drivers.list,将下面内容所在行前的！去掉  
+##### 打开drivers.list,将下面内容所在行前的！去掉  
 PNDRIV 1 /PNG  
 PNDRIV 2 /TPNG  
 PSDRIV 1 /PS  
@@ -112,8 +112,8 @@ XWDRIV 2 /XSERVE
 ../pgplot/makemake ../pgplot linux g77_gcc #再执行一次
 cd pgplot
 ```
-修改 Makefile
-第25行改为 FCOMPL=gfortran
+##### 修改 Makefile
+第25行改为 FCOMPL=gfortran  
 第880行改为 pndriv.o : /usr/include/png.h /usr/include/pngconf.h /usr/include/zlib.h /usr/include/zconf.h
 ```bash
 make
