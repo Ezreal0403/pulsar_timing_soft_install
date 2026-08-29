@@ -1,5 +1,5 @@
 # pulsar_timing_soft_installation
-此文档针对于x86_64架构CPU, Ubuntu系统安装常用的脉冲星计时软件（Dspsr,Psrcat,Psrchive,Tempo,Tempo2）.
+此文档针对于x86_64架构CPU, Ubuntu系统安装常用的脉冲星计时软件(Dspsr,Psrcat,Psrchive,Tempo,Tempo2),终端执行 uname -m 可以查看CPU架构.
 首先下载必要的依赖包.
 打开终端，运行命令
 sudo apt update
@@ -43,7 +43,7 @@ export PKG_CONFIG_PATH=$ASTROSOFT/lib/pkgconfig:$PKG_CONFIG_PATH:$ASTROSOFT/psrc
 若终端执行 echo $ASTROSOFT 输出了 /home/{user}/psrsoft 则成功
 mkdir $ASTROSOFT/bin $ASTROSOFT/lib
 
-安装FFT包
+### 安装FFT包
 cd $ASTROSOFT
 wget http://www.fftw.org/fftw-3.3.11.tar.gz
 tar zvxf fftw-3.3.11.tar.gz
@@ -55,7 +55,7 @@ make install
 make clean
 若在$ASTROSOFT/lib下看到libfftw3.so和libfftw3f.so两个文件说明安装成功
 
-按装CFITSIO包
+### 按装CFITSIO包
 cd $ASTROSOFT
 wget https://heasarc.gsfc.nasa.gov/FTP/software/fitsio/c/cfitsio-4.7.0.tar.gz
 tar zvxf cfitsio-4.7.0.tar.gz
@@ -65,7 +65,7 @@ make
 make install
 make clean
 
-安装Psrcat
+### 安装Psrcat
 cd $ASTROSOFT
 wget https://www.atnf.csiro.au/research/pulsar/psrcat/downloads/psrcat_pkg.v2.8.1.tar.gz
 tar zvxf psrcat_pkg.v2.8.1.tar.gz
@@ -73,7 +73,7 @@ cd psrcat_tar
 source makeit
 cp psrcat $ASTROSOFT/bin
 
-安装Pgplot
+### 安装Pgplot
 mkdir $ASTROSOFT/pgplot_build
 cd $ASTROSOFT
 wget ftp://ftp.astro.caltech.edu/pub/pgplot/pgplot5.2.tar.gz
@@ -100,7 +100,7 @@ make cpg
 ld -shared -o libcpgplot.so --whole-archive libcpgplot.a
 可以运行 ./cpgdemo 测试是否安装成功，点击终端，Enter切换下一张图
 
-安装Tempo
+### 安装Tempo
 cd $ASTROSOFT
 git clone git://git.code.sf.net/p/tempo/tempo
 cd tempo
@@ -110,7 +110,7 @@ make
 make install
 make clean
 
-安装Tempo2
+### 安装Tempo2
 cd $ASTROSOFT
 git clone https://bitbucket.org/psrsoft/tempo2.git
 ./bootstrap
@@ -118,7 +118,7 @@ git clone https://bitbucket.org/psrsoft/tempo2.git
 make && make install
 make plugins && make plugins-install
 
-安装Psrchive
+### 安装Psrchive
 cd $ASTROSOFT
 git clone git://git.code.sf.net/p/psrchive/code psrchive
 cd psrchive
@@ -128,7 +128,7 @@ make
 make install
 make clean
 
-安装Dspsr
+### 安装Dspsr
 cd $ASTROSOFT
 git clone git://git.code.sf.net/p/dspsr/code dspsr
 cd dspsr
