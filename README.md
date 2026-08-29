@@ -1,7 +1,7 @@
 # Pulsar_timing_soft_installation
-此文档针对于x86_64架构CPU, Ubuntu系统安装常用的脉冲星计时软件(Dspsr,Psrcat,Psrchive,Tempo,Tempo2),终端执行 uname -m 可以查看CPU架构.  
+此文档针对于**x86_64**架构CPU, **Ubuntu**系统安装常用的脉冲星计时软件(Dspsr,Psrcat,Psrchive,Tempo,Tempo2),终端执行 uname -m 可以查看CPU架构.  
 首先下载必要的依赖包.打开终端，运行命令  
-`sudo apt update`  
+```sudo apt update```  
 ```bash
 sudo apt install vim libtool wget libpng-dev libgd-dev autoconf automake libtool m4 git gsl-bin libgsl-dev flex bison fort77 libglib2.0-dev gnuplot  swig libltdl-dev libltdl7 cmake libblas3 liblapack3 libblas-dev liblapack-dev libxext-dev libx11-dev libopenmpi-dev openmpi-bin libhdf5-openmpi-dev mpich libmpich-dev libhdf5-mpich-dev tcsh pgplot5 imagemagick bc latex2html gfortran
 ```  
