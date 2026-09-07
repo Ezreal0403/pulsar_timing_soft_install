@@ -185,7 +185,6 @@ make clean
 ```
 
 ### 安装TempoNest
-gfortran settings
 ```bash
 cd $ASTROSOFT
 git clone https://github.com/LindleyLentati/TempoNest.git
