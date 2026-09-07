@@ -202,11 +202,21 @@ cd ..
 make
 ```
 ##### 编译MultiNest
+```bash
 cd MultiNest/  
 mv Makefile MakefileMPI  
-cp MakefileNoMPI Makefile
+cp MakefileNoMPI Makefile  
 make  
-make libnest3.so
-
+make libnest3.so  
 ```
 
+##### 编译安装TempoNest
+```bash
+cd $ASTROSOFT/TempoNest  
+./autogen.sh
+./configure CXXFLAGS=-I$ASTROSOFT/include LDFLAGS=-L$ASTROSOFT/lib  
+```
+打开TempoNest目录下的Makefile文件,在LIBS行(约367行)的-lm后面加上`-lmpi -lmpi_mpifh`,保存并退出.
+```bash
+make && make install
+```
