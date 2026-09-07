@@ -53,6 +53,8 @@ export LD_LIBRARY_PATH=/usr/lib:/usr/lib/x86_64-linux-gnu:$PGPLOT_DIR:$ASTROSOFT
 # all other executables are found in $ASTROSOFT/bin
 export PATH=$PATH:$ASTROSOFT/bin:$PGPLOT_DIR
 
+export LIBRARY_PATH=$ASTROSOFT/TempoNest/PolyChord/src:$LIBRARY_PATH
+
 # Pkgconfig
 export PKG_CONFIG_PATH=$ASTROSOFT/lib/pkgconfig:$PKG_CONFIG_PATH:$ASTROSOFT/psrchive/Management:$ASTROSOFT/lib/pkgconfig
 ```
@@ -183,13 +185,28 @@ make clean
 ```
 
 ### 安装TempoNest
+gfortran settings
 ```bash
 cd $ASTROSOFT
-git clone https://github.com/LindleyLentati/TempoNest.git  
-cd MultiNest/  
-mv Makefile MakefileMPI  
-cp MakefileNoMPI Makefile  
+git clone https://github.com/LindleyLentati/TempoNest.git
+```
+
+##### 修改编译取样软件包PolyChord的Makefile,将数组不同型的报错降为警告
+```bash
+cd TempoNest/PolyChord/src  
+vim Makefile  
+```
+将gfortran settings下的FCFLAGS行末尾(约第101行)加上`-fallow-argument-mismatch`
+```bash
+cd ..
 make
 ```
+##### 编译MultiNest
+cd MultiNest/  
+mv Makefile MakefileMPI  
+cp MakefileNoMPI Makefile
+make  
 make libnest3.so
+
+```
 
