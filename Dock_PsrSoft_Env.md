@@ -35,14 +35,18 @@ sudo systemctl restart docker
 sudo docker run hello-world
 ```
 若输出大段文字且带有**Hello from Docker!**,说明安装成功.
-
+### 下载镜像
+打开百度网盘地址,密码为3eBd,下载.tar格式镜像文件.它不是压缩文件,不要用tar解压缩.
+```
+https://pan.baidu.com/s/1e7qt0MRBTyLUFgsqkvhziw?pwd=3eBd
+```
 ### 加载镜像并创建容器
 ##### 镜像加载至Docker
-首先需要将本地下载好的镜像加载到Docker的系统文件夹中,用于后续创建容器.
+首先需要将本地下载好的镜像加载到Docker的系统文件夹中,用于后续创建容器.`cd`到存放.tar格式镜像文件所在的路径下.执行
 ```bash
-sudo docker load i my_image.tar
+sudo docker load i $MYIMAGE.tar
 ```
-执行此命令,确认my_image是否被加载
+执行此命令,确认$MYIMAGE是否被加载
 ```bash
 sudo docker images
 ```
@@ -52,7 +56,7 @@ sudo docker images
 ```bash
 xhost +local:root
 ```
-下面正式创建容器.`-it`使用终端与容器中系统交互,`--net=host`让容器中系统共享宿主机的ip,端口和网卡,`--name`给容器命名,将`$NAME`换为你喜欢的容器名字，`-e DISPLAY=$DISPLAY -e PGPLOT_DEV=/xs -v /tmp/.X11-unix:/tmp/.X11-unix`用于调用宿主机的画图功能,`-v $DATA:/data -v /mnt/my_image:/mnt:rshared`设置了2个挂载点,在宿主机`$DATA`路径下的文件会自动被容器系统识别,但是临时挂载移动硬盘到容器中,必须在宿主机以/mnt/my_image为挂载点挂载.
+下面正式创建容器.`-it`使用终端与容器中系统交互,`--net=host`让容器中系统共享宿主机的ip,端口和网卡,`--name`给容器命名，`-e DISPLAY=$DISPLAY -e PGPLOT_DEV=/xs -v /tmp/.X11-unix:/tmp/.X11-unix`用于调用宿主机的画图功能,`-v $DATA:/data -v /mnt/my_image:/mnt:rshared`设置了2个挂载点,在宿主机`$DATA`路径下的文件会自动被容器系统识别,但是临时挂载移动硬盘到容器中,必须在宿主机以/mnt/$MYIMAGE为挂载点挂载.**将`$NAME $DATA $MYIMAGE`替换为你想设置的名称或路径.**
 ```bash
-sudo docker run -it --net=host --name $NAME -e DISPLAY=$DISPLAY -e PGPLOT_DEV=/xs -v /tmp/.X11-unix:/tmp/.X11-unix -v $DATA:/data -v /mnt/my_image:/mnt:rshared my_image bash
+sudo docker run -it --net=host --name $NAME -e DISPLAY=$DISPLAY -e PGPLOT_DEV=/xs -v /tmp/.X11-unix:/tmp/.X11-unix -v $DATA:/data -v /mnt/$MYIMAGE:/mnt:rshared $MYIMAGE bash
 ```
