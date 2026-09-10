@@ -4,7 +4,7 @@
 >**更新时间**：2026.9.10
 
 
-此文档针对于**x86_64**架构CPU, **Ubuntu**系统安装常用的脉冲星计时软件(Psrcat,Tempo,Tempo2,Psrchive,Dspsr,TempoNest),终端执行`uname -m`可以查看CPU架构.另外要求能够科学上网来下载**境外源码**.  
+此文档针对于**x86_64**架构CPU, **Ubuntu 24.04**系统安装常用的脉冲星计时软件(Psrcat,Tempo,Tempo2,Psrchive,Dspsr,TempoNest),终端执行`uname -m`可以查看CPU架构.另外要求能够科学上网来下载**境外源码**.  
 ### 一、下载必要的依赖包
 打开终端，运行命令  
 ```bash
