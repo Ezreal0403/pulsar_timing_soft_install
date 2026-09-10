@@ -1,11 +1,11 @@
 <h1 align="center">脉冲星计时软件安装指南</h1>
 
 >**作者**：Ezreal  
->**更新时间**：2026.9.7
+>**更新时间**：2026.9.10
 
 
-此文档针对于**x86_64**架构CPU, **Ubuntu**系统安装常用的脉冲星计时软件(Dspsr,Psrcat,Psrchive,Tempo,Tempo2),终端执行`uname -m`可以查看CPU架构.另外要求能够科学上网来下载**境外源码**.  
-### 下载必要的依赖包
+此文档针对于**x86_64**架构CPU, **Ubuntu**系统安装常用的脉冲星计时软件(Psrcat,Tempo,Tempo2,Psrchive,Dspsr,TempoNest),终端执行`uname -m`可以查看CPU架构.另外要求能够科学上网来下载**境外源码**.  
+### 一、下载必要的依赖包
 打开终端，运行命令  
 ```bash
 sudo apt update
@@ -15,7 +15,7 @@ sudo apt install vim libtool wget libpng-dev libgd-dev autoconf automake libtool
 ```  
 等待安装完成.  
 
-### 添加环境变量  
+### 二、添加环境变量  
 ```bash
 vim ~/.bashrc
 ```
@@ -64,7 +64,7 @@ export PKG_CONFIG_PATH=$ASTROSOFT/lib/pkgconfig:$PKG_CONFIG_PATH:$ASTROSOFT/psrc
 ```bash
 mkdir $ASTROSOFT/bin $ASTROSOFT/lib
 ```
-### 安装FFT包
+### 三、安装FFT包
 ```bash
 cd $ASTROSOFT
 wget http://www.fftw.org/fftw-3.3.11.tar.gz
@@ -78,7 +78,7 @@ make clean
 ```
 若在$ASTROSOFT/lib下看到**libfftw3.so**和**libfftw3f.so**两个文件说明安装成功  
 
-### 按装CFITSIO包
+### 四、按装CFITSIO包
 ```bash
 cd $ASTROSOFT
 wget https://heasarc.gsfc.nasa.gov/FTP/software/fitsio/c/cfitsio-4.7.0.tar.gz
@@ -89,7 +89,7 @@ make
 make install
 make clean
 ```
-### 安装Psrcat
+### 五、安装Psrcat
 ```bash
 cd $ASTROSOFT
 wget https://www.atnf.csiro.au/research/pulsar/psrcat/downloads/psrcat_pkg.v2.8.1.tar.gz
@@ -98,7 +98,7 @@ cd psrcat_tar
 source makeit
 cp psrcat $ASTROSOFT/bin
 ```
-### 安装Pgplot
+### 六、安装Pgplot
 ```bash
 mkdir $ASTROSOFT/pgplot_build
 cd $ASTROSOFT
@@ -107,7 +107,7 @@ tar zvxf pgplot5.2.tar.gz
 cd pgplot_build
 ../pgplot/makemake ../pgplot linux g77_gcc
 ```
-##### 打开drivers.list,将下面内容所在行前的！去掉  
+##### 1.打开drivers.list,将下面内容所在行前的！去掉  
 PNDRIV 1 /PNG  
 PNDRIV 2 /TPNG  
 PSDRIV 1 /PS  
@@ -120,7 +120,7 @@ XWDRIV 2 /XSERVE
 ../pgplot/makemake ../pgplot linux g77_gcc #再执行一次
 cd pgplot
 ```
-##### 修改 Makefile
+##### 2.修改 Makefile
 第25行改为 FCOMPL=gfortran  
 第880行改为 pndriv.o : /usr/include/png.h /usr/include/pngconf.h /usr/include/zlib.h /usr/include/zconf.h
 ```bash
@@ -131,7 +131,7 @@ ld -shared -o libcpgplot.so --whole-archive libcpgplot.a
 ```
 可以运行`./cpgdemo`测试是否安装成功，点击终端，Enter切换下一张图
 
-### 安装Tempo
+### 七、安装Tempo
 ```bash
 cd $ASTROSOFT
 git clone git://git.code.sf.net/p/tempo/tempo
@@ -142,7 +142,7 @@ make
 make install
 make clean
 ```
-### 安装Tempo2
+### 八、安装Tempo2
 ```bash
 cd $ASTROSOFT
 git clone https://bitbucket.org/psrsoft/tempo2.git
@@ -151,7 +151,7 @@ git clone https://bitbucket.org/psrsoft/tempo2.git
 make && make install
 make plugins && make plugins-install
 ```
-### 安装Psrchive
+### 九、安装Psrchive
 ```bash
 cd $ASTROSOFT
 git clone git://git.code.sf.net/p/psrchive/code psrchive
@@ -162,7 +162,7 @@ make
 make install
 make clean
 ```
-### 安装Dspsr
+### 十、安装Dspsr
 ```bash
 cd $ASTROSOFT
 git clone git://git.code.sf.net/p/dspsr/code dspsr
@@ -184,13 +184,13 @@ make install
 make clean
 ```
 
-### 安装TempoNest
+### 十一、安装TempoNest
 ```bash
 cd $ASTROSOFT
 git clone https://github.com/LindleyLentati/TempoNest.git
 ```
 
-##### 修改编译取样软件包PolyChord的Makefile,将数组不同型的报错降为警告
+##### 1.修改编译取样软件包PolyChord的Makefile,将数组不同型的报错降为警告
 ```bash
 cd TempoNest/PolyChord/src  
 vim Makefile  
@@ -200,7 +200,7 @@ vim Makefile
 cd ..
 make
 ```
-##### 编译MultiNest
+##### 2.编译MultiNest
 ```bash
 cd MultiNest/  
 mv Makefile MakefileMPI  
@@ -209,7 +209,7 @@ make
 make libnest3.so  
 ```
 
-##### 编译安装TempoNest
+##### 3.编译安装TempoNest
 ```bash
 cd $ASTROSOFT/TempoNest  
 ./autogen.sh
