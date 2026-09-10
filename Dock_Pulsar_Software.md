@@ -5,22 +5,22 @@
 
 本文档适用于**X86_64**架构CPU,**Ubuntu 24.04**系统安装脉冲星软件(TEMPO,TEMPO2,TempoNest,PSRCHIVE,PSRCAT,PRESTO,DSPSR,PSRDADA,PSRDSALSA,PINT,MultiNest,MeerTime等).安装Docker以及下载Docker镜像要求连入互联网.
 
-### 下载镜像
+### 一、下载镜像
 打开百度网盘地址,密码为3eBd,下载.tar格式镜像文件.它不是压缩文件,不要用tar解压缩.
 ```
 https://pan.baidu.com/s/1e7qt0MRBTyLUFgsqkvhziw?pwd=3eBd
 ```
 
-### 安装Docker
-##### 安装Docker引擎
+### 二、安装Docker
+##### 1.安装Docker引擎
 ```bash
 sudo apt update
 sudo apt install curl
 curl -fsSL https://get.docker.com -o get-docker.sh  
 sudo sh get-docker.sh
 ```
-**以下三步用于拉取线上镜像和验证安装,如果通过云盘下载好了镜像可以省略**
-##### 配置镜像下载地址
+**以下三步用于拉取线上镜像和验证安装,如果安装Docker没有报错且通过云盘下载好了镜像就可以省略**
+##### 2.配置镜像下载地址
 ```bash
 vim /etc/docker/daemon.json
 ```
@@ -37,19 +37,19 @@ vim /etc/docker/daemon.json
 ```bash
 sudo usermod -aG docker $USER
 ```
-##### 重启Docker使配置生效
+##### 3.重启Docker使配置生效
 ```bash
 sudo systemctl daemon-reload  
 sudo systemctl restart docker
 ```
-##### 拉取在线镜像Hello World,验证安装
+##### 4.拉取在线镜像Hello World,验证安装
 ```bash
 sudo docker run hello-world
 ```
 若输出大段文字且带有**Hello from Docker!**,说明安装成功.
 
-### 加载镜像并创建容器
-##### 镜像加载至Docker
+### 三、加载镜像并创建容器
+##### 1.镜像加载至Docker
 首先需要将本地下载好的镜像加载到Docker的系统文件夹中,用于后续创建容器.`cd`到存放.tar格式镜像文件所在的路径下.执行
 ```bash
 sudo docker load i $MYIMAGE.tar
@@ -58,7 +58,7 @@ sudo docker load i $MYIMAGE.tar
 ```bash
 sudo docker images
 ```
-##### 创建容器
+##### 2.创建容器
 容器有必要的系统文件但是和宿主机共享内核,无法直接与硬件交互,所以不需要单独安装驱动,也必须借助宿主机挂载硬盘.  
 由于容器中完全没有图形界面,需要借用宿主机来执行容器中的画图命令.此命令用于宿主机授权容器.  
 ```bash
@@ -69,7 +69,7 @@ xhost +local:root
 sudo docker run -it --net=host --name $NAME -e DISPLAY=$DISPLAY -e PGPLOT_DEV=/xs -v /tmp/.X11-unix:/tmp/.X11-unix -v $DATA:/data -v /mnt/$MYIMAGE:/mnt:rshared $MYIMAGE bash
 ```
 
-### Docker常用命令
+### 四、Docker常用命令
 以下提供几个常用Docker命令.进入容器使用软件前需要先运行容器.
 运行容器``sudo docker start $NAME``  
 停运容器``sudo docker stop $NAME``  
