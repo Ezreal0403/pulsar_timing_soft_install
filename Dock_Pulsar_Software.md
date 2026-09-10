@@ -1,9 +1,9 @@
-<h1 align="center">脉冲星计时软件安装指南</h1>
+<h1 align="center">脉冲星软件安装指南(Docker版)</h1>
 
 >**作者**：Ezreal  
 >**更新时间**：2026.9.10
 
-本文档适用于**X86_64**架构CPU,**Ubuntu 24.04**系统安装脉冲星软件。安装Docker以及下载Docker镜像要求连入互联网。
+本文档适用于**X86_64**架构CPU,**Ubuntu 24.04**系统安装脉冲星软件(TEMPO,TEMPO2,TempoNest,PSRCHIVE,PSRCAT,PRESTO,DSPSR,PSRDADA,PSRDSALSA,PINT,MultiNest,MeerTime等).安装Docker以及下载Docker镜像要求连入互联网.
 
 ### 下载镜像
 打开百度网盘地址,密码为3eBd,下载.tar格式镜像文件.它不是压缩文件,不要用tar解压缩.
